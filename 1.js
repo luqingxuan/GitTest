@@ -1,3 +1,3 @@
 require('./../common/all.js');
-
-//$(document.body).css("background-color","green");
+s
+$(document.body).css("background-color", "green");
