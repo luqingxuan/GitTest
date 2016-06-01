@@ -5,7 +5,7 @@ webpack+gulp project
 2.命令行进入multipagesample目录
 3.执行npm install
 4.执行命令（见下）
-5.浏览器输入：http://localhost:8080访问
+5.默认浏览器自动打开地址栏：http://localhost:8888访问
 
 命令行（观察各种文件变动在assets目录）：
 1.gulp dev，开发人员调试命令
@@ -21,7 +21,10 @@ webpack+gulp project
 5.通过gulp-include-tag插件，统一管理meta信息，全局依赖性js/css，seo优化
 6.其它
 
+说明：
+  webpack解决了entry下资源变动热部署的问题，但是多页面html，html页面变动，监听缺少解决方案，
+  此处使用browser-sync插件，监听html变化，刷新浏览器，browser-sync代理8080默认端口
+  
 未解决：
-1.热部署，html代码浏览器无法刷新，还有待于进一步处理
-2.静态资源build后发布到cdn服务器，脚本未写
-3.其它
+1.静态资源build后发布到cdn服务器，脚本未写
+2.其它
