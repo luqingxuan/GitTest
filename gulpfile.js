@@ -109,17 +109,25 @@ gulp.task("webpack-dev", function(callback) {
 	var compiler = webpack(config);
 
 	new WebpackDevServer(compiler, {
-		stats : {
-			colors : true
-		},
+		inline : true,
 		hot : true,
 		historyApiFallback : false,
 		contentBase : path.resolve(__dirname, './assets'),
 		publicPath : config.output.publicPath,
+		// Set this if you want to enable gzip compression for assets
+		compress : true,
+		// webpack-dev-middleware options
 		// quiet: false,
 		// noInfo: false,
-		inline : true,
 		lazy : false,
+		stats : {
+			colors : true
+		},
+		headers : {
+			'Access-Control-Allow-Origin' : '*',
+			'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,OPTIONS',
+			'Access-Control-Allow-Headers' : 'Content-Type'
+		},
 		proxy : proxy
 	}).listen(port, domain, function(err) {
 
@@ -216,17 +224,25 @@ gulp.task("webpack-test", function(callback) {
 	var compiler = webpack(config);
 
 	new WebpackDevServer(compiler, {
-		stats : {
-			colors : true
-		},
+		inline : true,
 		hot : true,
 		historyApiFallback : false,
 		contentBase : path.resolve(__dirname, './assets'),
 		publicPath : config.output.publicPath,
+		// Set this if you want to enable gzip compression for assets
+		compress : true,
+		// webpack-dev-middleware options
 		// quiet: false,
 		// noInfo: false,
-		inline : true,
 		lazy : false,
+		stats : {
+			colors : true
+		},
+		headers : {
+			'Access-Control-Allow-Origin' : '*',
+			'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE,OPTIONS',
+			'Access-Control-Allow-Headers' : 'Content-Type'
+		},
 		proxy : proxy
 	}).listen(port, domain, function(err) {
 
@@ -249,12 +265,18 @@ gulp.task("dev", function(callback) {
 
 	runSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
 
+	// 监听HTML文件变化
+	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
+
 });
 
 // 开发测试环境
 gulp.task("test", function(callback) {
 
 	runSequence('clean', 'oldie', 'html-include', 'webpack-test', callback);
+
+	// 监听HTML文件变化
+	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
 
 });
 
