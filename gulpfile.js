@@ -2,6 +2,8 @@ var path = require('path');
 
 var gulp = require("gulp");
 
+var browserSync = require('browser-sync');
+
 var concat = require('gulp-concat');
 
 var uglify = require('gulp-uglify');
@@ -12,13 +14,24 @@ var htmlmin = require('gulp-htmlmin');
 
 var includeTag = require('gulp-include-tag');
 
-var runSequence = require('run-sequence');
+var gulpSequence = require('gulp-sequence');
 
 var webpack = require("webpack");
 
 var WebpackDevServer = require('webpack-dev-server');
 
 var webpackConfig = require("./webpack.config.js");
+
+// 负责监听HTML变化,并刷新浏览器
+var browserSyncStartPlugin = function() {
+
+	this.plugin("done", function() {
+
+		gulp.start("browser-sync");
+
+	});
+
+};
 
 var domain = "localhost";
 
@@ -92,6 +105,9 @@ gulp.task("webpack-dev", function(callback) {
 	config.plugins = config.plugins
 			.concat(new webpack.HotModuleReplacementPlugin());
 
+	// 启动browser-sync
+	config.plugins.push(browserSyncStartPlugin);
+
 	for ( var key in config.entry) {
 
 		if (!config.entry.hasOwnProperty(key))
@@ -108,7 +124,7 @@ gulp.task("webpack-dev", function(callback) {
 
 	var compiler = webpack(config);
 
-	new WebpackDevServer(compiler, {
+	var server = new WebpackDevServer(compiler, {
 		inline : true,
 		hot : true,
 		historyApiFallback : false,
@@ -129,11 +145,15 @@ gulp.task("webpack-dev", function(callback) {
 			'Access-Control-Allow-Headers' : 'Content-Type'
 		},
 		proxy : proxy
-	}).listen(port, domain, function(err) {
+	});
+
+	server.listen(port, domain, function(err) {
 
 		console.log('start at ' + domain + ':' + port);
 
 	});
+
+	return server;
 
 });
 
@@ -207,6 +227,9 @@ gulp.task("webpack-test", function(callback) {
 	config.plugins = config.plugins
 			.concat(new webpack.HotModuleReplacementPlugin());
 
+	// 启动browser-sync
+	config.plugins.push(browserSyncStartPlugin);
+
 	for ( var key in config.entry) {
 
 		if (!config.entry.hasOwnProperty(key))
@@ -223,7 +246,7 @@ gulp.task("webpack-test", function(callback) {
 
 	var compiler = webpack(config);
 
-	new WebpackDevServer(compiler, {
+	var server = new WebpackDevServer(compiler, {
 		inline : true,
 		hot : true,
 		historyApiFallback : false,
@@ -244,18 +267,22 @@ gulp.task("webpack-test", function(callback) {
 			'Access-Control-Allow-Headers' : 'Content-Type'
 		},
 		proxy : proxy
-	}).listen(port, domain, function(err) {
+	});
+
+	server.listen(port, domain, function(err) {
 
 		console.log('start at ' + domain + ':' + port);
 
 	});
+
+	return server;
 
 });
 
 // 正式发布文件
 gulp.task("build", function(callback) {
 
-	runSequence('clean', 'oldie', 'html-include', 'webpack-build', 'md5',
+	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build', 'md5',
 			'html-minify', callback);
 
 });
@@ -263,7 +290,7 @@ gulp.task("build", function(callback) {
 // 开发调试环境
 gulp.task("dev", function(callback) {
 
-	runSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
+	gulpSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
@@ -273,10 +300,24 @@ gulp.task("dev", function(callback) {
 // 开发测试环境
 gulp.task("test", function(callback) {
 
-	runSequence('clean', 'oldie', 'html-include', 'webpack-test', callback);
+	gulpSequence('clean', 'oldie', 'html-include', 'webpack-test', callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
+
+});
+
+// 监听HTML页面变化
+gulp.task("browser-sync", function(callback) {
+
+	browserSync({
+		proxy : domain + ':' + port,
+		port : 8888,
+		files : [ 'assets/**/*.html' ],
+		open : true,
+		notify : true,
+		reloadDelay : 500,// 延迟刷新
+	});
 
 });
 
