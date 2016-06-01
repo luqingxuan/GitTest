@@ -1,5 +1,12 @@
 webpack+gulp project
 
+使用：
+1.拉下来project到本地
+2.命令行进入multipagesample目录
+3.执行npm install
+4.执行命令（见下）
+5.浏览器输入：http://localhost:8080访问
+
 命令行：
 1.gulp dev，开发人员调试命令
 2.gulp test，开发人员测试命令，与1的区别在于代码是压缩处理过的
