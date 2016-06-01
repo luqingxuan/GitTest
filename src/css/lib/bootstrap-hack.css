@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+.table {
+	margin-bottom: 0;
+}
+
+.table-bordered>thead>tr>th, .table-bordered>thead>tr>td {
+	border-bottom-width: 1px;
+}
+
+.btn:focus, .btn:hover, .btn:active, .btn.active {
+	outline: none !important;
+}
+
+a:hover, a:active, a.active, a:focus {
+	outline: none !important;
+}
