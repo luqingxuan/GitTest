@@ -80,7 +80,7 @@ var pageEntrys = function(entrys) {
 		// 后缀
 		entry = entry.replace(/\.js$/, "");
 
-		entrys[entry] = name;
+		entrys[entry] = [name];
 
 	});
 
@@ -184,8 +184,11 @@ module.exports = {
 	context : __dirname,
 	entry : entrys(),
 	output : {
+		// 生成文件放到assets文件夹
 		path : path.resolve(__dirname, './assets'),
+		// 添加http访问上下文路径
 		publicPath : '/assets/',
+		// JS文件放到js文件夹
 		filename : './js/[name].js'
 	},
 	resolveLoader : {

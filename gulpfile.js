@@ -20,6 +20,19 @@ var WebpackDevServer = require('webpack-dev-server');
 
 var webpackConfig = require("./webpack.config.js");
 
+var domain = "localhost";
+
+// 监听端口
+var port = 8080;
+
+// 后台调试API转发配置
+var proxy = {
+	'/v1/*' : {
+		target : 'http://localhost:3000/',
+		secure : false
+	}
+};
+
 // 低版本IE8补丁
 gulp.task('oldie', function() {
 
@@ -75,6 +88,24 @@ gulp.task("webpack-dev", function(callback) {
 
 	delete config.devServer;
 
+	// hot module replacement
+	config.plugins = config.plugins
+			.concat(new webpack.HotModuleReplacementPlugin());
+
+	for ( var key in config.entry) {
+
+		if (!config.entry.hasOwnProperty(key))
+			continue;
+
+		if (!(config.entry[key] instanceof Array))
+			config.entry[key] = [ config.entry[key] ];
+
+		config.entry[key].unshift('webpack/hot/dev-server');
+		config.entry[key].unshift(require.resolve("webpack-dev-server/client/")
+				+ "?" + "http://" + domain + ":" + port);
+
+	}
+
 	var compiler = webpack(config);
 
 	new WebpackDevServer(compiler, {
@@ -89,15 +120,10 @@ gulp.task("webpack-dev", function(callback) {
 		// noInfo: false,
 		inline : true,
 		lazy : false,
-		proxy : {
-			'/v1/*' : {
-				target : 'http://localhost:3000/',
-				secure : false
-			}
-		}
-	}).listen(8080, 'localhost', function(err) {
+		proxy : proxy
+	}).listen(port, domain, function(err) {
 
-		console.log('start at localhost:8080');
+		console.log('start at ' + domain + ':' + port);
 
 	});
 
@@ -125,6 +151,7 @@ gulp.task("webpack-build", function(callback) {
 					except : [ '$super', '$', 'exports', 'require' ]
 				// 排除关键字
 				},
+				comments : false,
 				compress : {
 					warnings : false
 				}
@@ -162,10 +189,29 @@ gulp.task("webpack-test", function(callback) {
 					except : [ '$super', '$', 'exports', 'require' ]
 				// 排除关键字
 				},
+				comments : false,
 				compress : {
 					warnings : false
 				}
 			}));
+
+	// hot module replacement
+	config.plugins = config.plugins
+			.concat(new webpack.HotModuleReplacementPlugin());
+
+	for ( var key in config.entry) {
+
+		if (!config.entry.hasOwnProperty(key))
+			continue;
+
+		if (!(config.entry[key] instanceof Array))
+			config.entry[key] = [ config.entry[key] ];
+
+		config.entry[key].unshift('webpack/hot/dev-server');
+		config.entry[key].unshift(require.resolve("webpack-dev-server/client/")
+				+ "?" + "http://" + domain + ":" + port);
+
+	}
 
 	var compiler = webpack(config);
 
@@ -181,15 +227,10 @@ gulp.task("webpack-test", function(callback) {
 		// noInfo: false,
 		inline : true,
 		lazy : false,
-		proxy : {
-			'/v1/*' : {
-				target : 'http://localhost:3000/',
-				secure : false
-			}
-		}
-	}).listen(8080, 'localhost', function(err) {
+		proxy : proxy
+	}).listen(port, domain, function(err) {
 
-		console.log('start at localhost:8080');
+		console.log('start at ' + domain + ':' + port);
 
 	});
 
@@ -206,11 +247,7 @@ gulp.task("build", function(callback) {
 // 开发调试环境
 gulp.task("dev", function(callback) {
 
-	runSequence('clean', 'oldie', 'html-include', 'webpack-dev', function() {
-
-		gulp.watch('./src/js/pages/**/*.js', 'default');
-
-	});
+	runSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
 
 });
 
