@@ -1,1 +1,20 @@
 webpack+gulp project
+
+命令行：
+1.gulp dev，开发人员调试命令
+2.gulp test，开发人员测试命令，与1的区别在于代码是压缩处理过的
+3.gulp build，打包发布命令
+
+特点
+1.webpack+gulp方式集成开发
+2.集成jquery/bootstrap，同样易于集成其它plugin
+2.js/css/html压缩，js混淆，减小体积
+3.MD5文件版本管理
+4.前后端分离，API调试方便
+5.通过gulp-include-tag插件，统一管理meta信息，全局依赖性js/css，seo优化
+6.其它
+
+未解决：
+1.热部署，代码更改浏览器刷新调试，还有待于进一步处理
+2.静态资源build后发布到cdn服务器，脚本未写
+3.其它
