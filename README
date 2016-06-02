@@ -2,7 +2,7 @@ webpack+gulp project
 
 使用：
 1.拉下来project到本地
-2.命令行进入multipagesample目录
+2.命令行进入JqueryPageExample目录
 3.执行npm install
 4.执行命令（见下）
 5.默认浏览器自动打开地址栏：http://localhost:8888访问
