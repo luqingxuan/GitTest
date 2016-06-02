@@ -1,6 +1,3 @@
-<!--[if lt IE 9]>
-<script type="text/javascript" src="/assets/js/oldie.js"></script>
-<![endif]-->
 <!-- jQuery依赖 -->
 <script type="text/javascript" src="/assets/js/jquery.js"></script>
 <!-- 日期处理依赖 -->
