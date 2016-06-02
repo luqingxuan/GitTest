@@ -80,7 +80,7 @@ var pageEntrys = function(entrys) {
 		// 后缀
 		entry = entry.replace(/\.js$/, "");
 
-		entrys[entry] = [name];
+		entrys[entry] = [ name ];
 
 	});
 
@@ -105,7 +105,7 @@ var loaders = [
 			test : /\.js$/,
 			loader : 'babel',
 			query : {
-				compact : false
+				presets : [ 'es2015' ]
 			},
 			exclude : /node_modules/
 		},
