@@ -46,6 +46,7 @@
     "moment": "^2.11.1",
     "postcss-loader": "^0.8.0",
     "precss": "^1.4.0",
+    "purecss": "^0.6.0",
     "react": "^0.14.7",
     "react-dom": "^0.14.7",
     "react-router": "^2.0.0-rc5",
