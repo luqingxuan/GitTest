@@ -1,3 +1,18 @@
 参考：https://github.com/mingfengwang/webpack-react-redux
 
-1.如果要兼容到IE8，开发中不能使用export default {}格式，使用module.exports={}
+如果要兼容到IE8
+1.使用jquery2.0.0一下版本
+
+2.开发中不能使用export default {}格式，使用module.exports={}
+使用es3ify-loader处理
+
+3.react 0.15.x版本不再不支持IE8
+
+4.ES6 Promise Object fix
+require('es6-promise').polyfill();
+
+5.ES6 Fetch Object fix
+require('fetch-polyfill');
+
+6.ES6 Object.assign
+require('core-js/es6/object');
