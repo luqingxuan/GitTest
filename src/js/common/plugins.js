@@ -7,6 +7,9 @@ require('font-awesome-webpack!../../../font-awesome.config.js');
 // 本地存储插件
 require('../lib/jquery/jquery.storage.js');
 
+// cookie
+require("js-cookie");
+
 // 遮罩插件
 // require('imports?jQuery=jquery,$=jquery,this=>window!../lib/jquery/loadmask/jquery.loadmask.js');
 require('../lib/jquery/loadmask/jquery.loadmask.js');
