@@ -193,10 +193,36 @@ gulp.task("webpack-build", function(callback) {
 
 });
 
+// 正式打包
+gulp.task("webpack-build-source", function(callback) {
+
+	var config = Object.create(webpackConfig);
+
+	config.devtool = 'eval';
+
+	config.debug = false;
+
+	delete config.devServer;
+
+	config.plugins = config.plugins.concat(new webpack.DefinePlugin({
+		"process.env" : {
+			// This has effect on the react lib size
+			"NODE_ENV" : JSON.stringify("production")
+		}
+	}), new webpack.optimize.DedupePlugin());
+
+	return webpack(config, function() {
+
+		callback();
+
+	});
+
+});
+
 // 正式环境下，需要对文件进行压缩混淆，
 // 但是这个压缩混淆后的代码，开发人员有可能代码质量有问题
 // 压缩后代码失效，所以此处开一个测试环境，让开发人员开发完成后，切换环境跑一下
-gulp.task("webpack-test", function(callback) {
+gulp.task("webpack-dev-source", function(callback) {
 
 	var config = Object.create(webpackConfig);
 
@@ -279,11 +305,19 @@ gulp.task("webpack-test", function(callback) {
 
 });
 
-// 正式发布文件
+// 正式打包压缩文件
 gulp.task("build", function(callback) {
 
 	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build', 'md5',
 			'html-minify', callback);
+
+});
+
+// 正式打包源码文件
+gulp.task("build-source", function(callback) {
+
+	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build-source',
+			callback);
 
 });
 
@@ -298,9 +332,10 @@ gulp.task("dev", function(callback) {
 });
 
 // 开发测试环境
-gulp.task("test", function(callback) {
+gulp.task("dev-source", function(callback) {
 
-	gulpSequence('clean', 'oldie', 'html-include', 'webpack-test', callback);
+	gulpSequence('clean', 'oldie', 'html-include', 'webpack-dev-source',
+			callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
