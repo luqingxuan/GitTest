@@ -115,6 +115,7 @@ gulp.task("webpack-build", function(callback) {
 				},
 				comments : false,
 				compress : {
+					// screw_ie8: true,//IE8
 					warnings : false
 				}
 			}));
@@ -246,6 +247,7 @@ gulp.task("webpack-dev-minify", function(callback) {
 				},
 				comments : false,
 				compress : {
+					// screw_ie8: true,//IE8
 					warnings : false
 				}
 			}));
