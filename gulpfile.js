@@ -50,10 +50,11 @@ var proxy = {
 gulp.task('oldie', function() {
 
 	return gulp.src(
-			[ './src/js/lib/json2.js', './src/js/lib/es5-shim.js',
-					'./src/js/lib/es5-sham.js', './src/js/lib/html5shiv.js',
-					'./src/js/lib/respond.js' ]).pipe(concat('oldie.js')).pipe(
-			uglify()).pipe(gulp.dest('./assets/js'));
+			[ './src/js/lib/console-polyfill.js', './src/js/lib/json2.js',
+					'./src/js/lib/es5-shim.js', './src/js/lib/es5-sham.js',
+					'./src/js/lib/html5shiv.js', './src/js/lib/respond.js' ])
+			.pipe(concat('oldie.js')).pipe(uglify()).pipe(
+					gulp.dest('./assets/js'));
 
 });
 

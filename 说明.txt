@@ -1,0 +1,3 @@
+参考：https://github.com/mingfengwang/webpack-react-redux
+
+1.如果要兼容到IE8，开发中不能使用export default {}格式，使用module.exports={}
