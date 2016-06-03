@@ -9,8 +9,9 @@ webpack+gulp project
 
 命令行（观察各种文件变动在assets目录）：
 1.gulp dev，开发人员调试命令
-2.gulp test，开发人员测试命令，与1的区别在于代码是压缩处理过的
-3.gulp build，打包发布命令
+2.gulp dev-minify，开发人员测试命令，与1的区别在于代码是压缩处理过的
+3.gulp build，打包发布压缩文件命令
+4.gulp build-source，打包源文件
 
 特点
 1.webpack+gulp方式集成开发
