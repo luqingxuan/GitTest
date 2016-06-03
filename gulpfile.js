@@ -90,7 +90,7 @@ gulp.task('md5', function() {
 
 });
 
-// 正式打包
+// 正式打包压缩文件
 gulp.task("webpack-build", function(callback) {
 
 	var config = Object.create(webpackConfig);
@@ -126,7 +126,7 @@ gulp.task("webpack-build", function(callback) {
 
 });
 
-// 正式打包
+// 正式打包源码文件
 gulp.task("webpack-build-source", function(callback) {
 
 	var config = Object.create(webpackConfig);
@@ -321,7 +321,7 @@ gulp.task("build-source", function(callback) {
 
 });
 
-// 开发调试环境
+// 开发源码调试环境
 gulp.task("dev", function(callback) {
 
 	gulpSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
