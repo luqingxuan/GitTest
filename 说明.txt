@@ -10,6 +10,7 @@
 
 4.ES6 Promise Object fix
 require('es6-promise').polyfill();
+注意:IE8下Promise.catch中catch是关键字，请使用Promise['catch'](func)或者Promise.then(undefined,func)代替
 
 5.ES6 Fetch Object fix
 require('fetch-polyfill');
