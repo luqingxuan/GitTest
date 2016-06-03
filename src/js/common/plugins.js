@@ -1,4 +1,4 @@
-require('../../css/lib/animate.css');
+require('animate.css');
 
 require('../../css/lib/hover.css');
 
