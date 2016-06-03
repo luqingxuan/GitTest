@@ -12,8 +12,8 @@ require("js-cookie");
 
 // 遮罩插件
 // require('imports?jQuery=jquery,$=jquery,this=>window!../lib/jquery/loadmask/jquery.loadmask.js');
-require('../lib/jquery/loadmask/jquery.loadmask.js');
-require('../lib/jquery/loadmask/jquery.loadmask.css');
+// require('../lib/jquery/loadmask/jquery.loadmask.js');
+require("jquery.loadmask");
 
 // 弹出提示插件
 require('../lib/jquery/confirm/jquery.confirm.js');
