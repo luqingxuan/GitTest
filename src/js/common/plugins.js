@@ -1,7 +1,17 @@
+// CSS重置，
+// 如果你使用了bootstrap或pure.css，请注释掉，他们包含此CSS库
+// require('normalize.css');
+
+// CSS库
+// require('purecss');
+
+// CSS3动画库
 require('animate.css');
 
+// CSS3动画库
 require('../../css/lib/hover.css');
 
+// CSS3字体图标库
 require('font-awesome-webpack!../../../font-awesome.config.js');
 
 // 本地存储插件
