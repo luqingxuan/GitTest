@@ -198,7 +198,12 @@ module.exports = {
 		// 自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名
 		extensions : [ '', '.js', '.json', '.scss' ],
 		// 模块别名定义，方便后续直接引用别名，无须多写长长的地址
-		alias : {}
+		alias : {
+			root : path.resolve(''),
+			js : path.resolve('src/js'),
+			css : path.resolve('src/css'),
+			images : path.resolve('src/images')
+		}
 	},
 	// 当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中
 	// 通过引用外部文件的方式引入第三方库 via script tag

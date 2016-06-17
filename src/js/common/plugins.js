@@ -9,10 +9,10 @@
 require('animate.css');
 
 // CSS3动画库
-require('../../css/lib/hover.css');
+require('css/lib/hover.css');
 
 // CSS3字体图标库
-require('font-awesome-webpack!../../../font-awesome.config.js');
+require('font-awesome-webpack!root/font-awesome.config.js');
 
 // 本地存储插件
 require('jstorage');
@@ -26,5 +26,5 @@ require("js-cookie");
 require("jquery.loadmask");
 
 // 弹出提示插件
-require('../lib/jquery/confirm/jquery.confirm.js');
-require('../lib/jquery/confirm/jquery.confirm.css');
+require('js/lib/jquery/confirm/jquery.confirm.js');
+require('js/lib/jquery/confirm/jquery.confirm.css');
