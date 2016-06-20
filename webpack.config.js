@@ -202,7 +202,8 @@ module.exports = {
 			root : path.resolve(''),
 			js : path.resolve('src/js'),
 			css : path.resolve('src/css'),
-			images : path.resolve('src/images')
+			images : path.resolve('src/images'),
+			components : path.resolve('src/js/components')
 		}
 	},
 	// 当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中
