@@ -174,7 +174,7 @@ var loaders = [
 				name : 'font/[name]_[hash].[ext]'
 			}
 		}, {// 如果要加载jQuery插件,解析路径&参数
-			test : "/src/js/lib/jquery/**/*.js$",
+			test : "/src/js/components/jquery/**/*.js$",
 			loader : "'imports?jQuery=jquery,$=jquery,this=>window"
 		} ];
 
