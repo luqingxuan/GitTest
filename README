@@ -25,7 +25,7 @@ webpack+gulp project
 说明：
   webpack解决了entry下资源变动热部署的问题，但是多页面html，html页面变动，监听缺少解决方案，
   此处使用browser-sync插件，监听html变化，刷新浏览器，browser-sync代理8080默认端口
-  
+  注意，执行命令gulp build打包出来的资源，除了css/js/font/images目录，其它都是html页面
 未解决：
 1.静态资源build后发布到cdn服务器，脚本未写
 2.其它
