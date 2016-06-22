@@ -1,1 +1,5 @@
 @CHARSET "UTF-8";
+
+body {
+	background: url("../../images/alert.png") no-repeat;
+}
