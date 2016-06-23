@@ -2,11 +2,11 @@
 <link rel="dns-prefetch" href="http://localhost" />
 
 <!-- Icon -->
-<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-152.87c020b9.png" sizes="152x152" />
-<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-120.496c913b.png" sizes="120x120" />
-<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-76.dcf79352.png" sizes="76x76" />
-<link rel="apple-touch-icon" href="https://static.zhihu.com/static/revved/img/ios/touch-icon-60.9911cffb.png" sizes="60x60" />
-<link rel="shortcut icon" href="https://static.zhihu.com/static/favicon.ico" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/assets/images/icons/touch-icon-152-152.png" sizes="152x152" />
+<link rel="apple-touch-icon" href="/assets/images/icons/touch-icon-120-120.png" sizes="120x120" />
+<link rel="apple-touch-icon" href="/assets/images/icons/touch-icon-76-76.png" sizes="76x76" />
+<link rel="apple-touch-icon" href="/assets/images/icons/touch-icon-60-60.png" sizes="60x60" />
+<link rel="shortcut icon" href="/assets/images/icons/favicon.ico" type="image/x-icon" />
 
 <!-- Bootstrap依赖 -->
 <link rel="stylesheet" href="/assets/css/bootstrap.css" />
