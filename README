@@ -7,7 +7,7 @@ webpack+gulp project
 4.执行命令（见下）
 5.默认浏览器自动打开地址栏：http://localhost:8888访问
 
-命令行（观察各种文件变动在assets目录）：
+命令行（观察各种文件变动在dist目录）：
 1.gulp dev，开发人员调试命令
 2.gulp dev-minify，开发人员测试命令，与1的区别在于代码是压缩处理过的
 3.gulp build，打包发布压缩文件命令
