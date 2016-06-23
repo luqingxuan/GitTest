@@ -23,7 +23,7 @@ new webpack.ProvidePlugin({
 	moment : "moment",
 }),
 // CSS文件放置在CSS目录
-new ExtractTextPlugin("./css/[name].css") ];
+new ExtractTextPlugin("./assets/css/[name].css") ];
 
 // 全局性依赖，手动配置
 var globalEntrys = function(entrys) {
@@ -117,7 +117,7 @@ var loaders = [
 			query : {
 				limit : 10000,
 				// CSS图片目录
-				name : '[path][name]_[hash].[ext]'
+				name : 'assets/images/[name].[ext]'
 			}
 		},
 		{
@@ -137,7 +137,7 @@ var loaders = [
 				limit : 10000,
 				mimetype : 'application/font-woff',
 				// 字体文件放置目录
-				name : 'font/[name]_[hash].[ext]'
+				name : 'assets/font/[name].[ext]'
 			}
 		}, {// bootstrap
 			test : /\.ttf(\?v=\d+\.\d+\.\d+)?$/,
@@ -146,7 +146,7 @@ var loaders = [
 				limit : 10000,
 				mimetype : 'application/octet-stream',
 				// 字体文件放置目录
-				name : 'font/[name]_[hash].[ext]'
+				name : 'assets/font/[name].[ext]'
 			}
 		}, {// bootstrap
 			test : /\.eot(\?v=\d+\.\d+\.\d+)?$/,
@@ -154,7 +154,7 @@ var loaders = [
 			query : {
 				limit : 10000,
 				// 字体文件放置目录
-				name : 'font/[name]_[hash].[ext]'
+				name : 'assets/font/[name].[ext]'
 			}
 		}, {// bootstrap
 			test : /\.svg(\?v=\d+\.\d+\.\d+)?$/,
@@ -163,7 +163,7 @@ var loaders = [
 				limit : 10000,
 				mimetype : 'application/image/svg+xml',
 				// 字体文件放置目录
-				name : 'font/[name]_[hash].[ext]'
+				name : 'assets/font/[name].[ext]'
 			}
 		}, {// font-awesome
 			test : /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -171,7 +171,7 @@ var loaders = [
 			query : {
 				limit : 10000,
 				// 字体文件放置目录
-				name : 'font/[name]_[hash].[ext]'
+				name : 'assets/font/[name].[ext]'
 			}
 		}, {// 如果要加载jQuery插件,解析路径&参数
 			test : "/src/js/components/jquery/**/*.js$",
@@ -183,11 +183,11 @@ module.exports = {
 	entry : entrys(),
 	output : {
 		// 生成文件放到assets文件夹
-		path : path.resolve(__dirname, './assets'),
+		path : path.resolve(__dirname, './dist'),
 		// 添加http访问上下文路径
-		publicPath : '/assets/',
+		publicPath : '/',
 		// JS文件放到js文件夹
-		filename : './js/[name].js'
+		filename : './assets/js/[name].js'
 	},
 	resolveLoader : {
 		root : path.join(__dirname, 'node_modules')
@@ -224,7 +224,7 @@ module.exports = {
 		}), precss ];
 	},
 	devServer : {
-		contentBase : './assets',
+		contentBase : './dist',
 		historyApiFallback : true,
 		noInfo : true,
 		// 其实很简单的，只要配置这个参数就可以了

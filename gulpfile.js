@@ -43,38 +43,83 @@ var proxy = {
 
 // 低版本IE8补丁
 gulp.task('oldie', function() {
-	return gulp.src(
-			[ './src/js/lib/console-polyfill.js', './src/js/lib/json2.js',
-					'./src/js/lib/es5-shim.js', './src/js/lib/es5-sham.js',
-					'./src/js/lib/html5shiv.js', './src/js/lib/respond.js' ])
-			.pipe(concat('oldie.js')).pipe(uglify()).pipe(
-					gulp.dest('./assets/js'));
+	var src = [ './src/js/lib/console-polyfill.js' ];
+	src.push('./src/js/lib/json2.js');
+	src.push('./src/js/lib/es5-shim.js', './src/js/lib/es5-sham.js');
+	src.push('./src/js/lib/html5shiv.js', './src/js/lib/respond.js');
 
+	return gulp.src(src).pipe(concat('oldie.js')).pipe(uglify()).pipe(
+			gulp.dest('./dist/assets/js'));
 });
 
 // 清理目录
 gulp.task('clean', function() {
-	return require('del')([ './assets/*' ]);
+	return require('del')([ './dist/*' ]);
 });
 
 // HTML页面include处理
 gulp.task('html-include', function() {
 	return gulp.src('./src/html/pages/**/*.html').pipe(includeTag()).pipe(
-			gulp.dest('./assets'));
+			gulp.dest('./dist'));
 });
 
 // HTML文件整理
 gulp.task('html-minify', function() {
-	return gulp.src('./assets/**/*.html').pipe(htmlmin({
+	return gulp.src('./dist/**/*.html').pipe(htmlmin({
 		collapseWhitespace : true,
 		removeComments : true
-	})).pipe(gulp.dest('./assets'));
+	})).pipe(gulp.dest('./dist'));
 });
 
 // MD5文件后缀命名
-gulp.task('md5', function() {
-	return gulp.src([ "./assets/**/*.css", "./assets/**/*.js" ]).pipe(
-			md5(8, './assets/**/*.html')).pipe(gulp.dest("./assets"));
+gulp.task('md5-font', function() {
+	var src = [ "./dist/assets/font/**/*.*" ];
+
+	return gulp.src(src).pipe(md5(8, './dist/assets/css/**/*.css')).pipe(
+			gulp.dest("./dist/assets/font"));
+});
+
+// MD5文件后缀命名
+gulp.task('md5-images', function() {
+	var src = [ "./dist/assets/images/**/*.*" ];
+
+	return gulp.src(src).pipe(md5(8, './dist/assets/css/**/*.css')).pipe(
+			gulp.dest("./dist/assets/images"));
+});
+
+// MD5文件后缀命名
+gulp.task('html-images', function() {
+	var src = [ "./src/images/**/*.*" ];
+
+	return gulp.src(src).pipe(gulp.dest("./dist/assets/images"));
+});
+gulp.task('md5-html-images', [ 'html-images' ], function() {
+	var src = [ "./dist/assets/images/**/*.*" ];
+
+	return gulp.src(src).pipe(md5(8, './dist/**/*.html')).pipe(
+			gulp.dest("./dist/assets/images"));
+});
+
+// MD5文件后缀命名
+gulp.task('md5-css', function() {
+	var src = [ "./dist/assets/css/**/*.css" ];
+
+	return gulp.src(src).pipe(md5(8, './dist/**/*.html')).pipe(
+			gulp.dest("./dist/assets/css"));
+});
+
+// MD5文件后缀命名
+gulp.task('md5-js', function() {
+	var src = [ "./dist/assets/js/**/*.js" ];
+
+	return gulp.src(src).pipe(md5(8, './dist/**/*.html')).pipe(
+			gulp.dest("./dist/assets/js"));
+});
+
+// MD5文件后缀命名
+gulp.task('md5', function(callback) {
+	return gulpSequence('md5-images', 'md5-html-images', 'md5-font', 'md5-css',
+			'md5-js', callback);
 });
 
 // 正式打包压缩文件
@@ -171,7 +216,7 @@ gulp.task("webpack-dev", function(callback) {
 		inline : true,
 		hot : true,
 		historyApiFallback : false,
-		contentBase : path.resolve(__dirname, './assets'),
+		contentBase : path.resolve(__dirname, './dist'),
 		publicPath : config.output.publicPath,
 		// Set this if you want to enable gzip compression for assets
 		compress : true,
@@ -253,7 +298,7 @@ gulp.task("webpack-dev-minify", function(callback) {
 		inline : true,
 		hot : true,
 		historyApiFallback : false,
-		contentBase : path.resolve(__dirname, './assets'),
+		contentBase : path.resolve(__dirname, './dist'),
 		publicPath : config.output.publicPath,
 		// Set this if you want to enable gzip compression for assets
 		compress : true,
@@ -288,24 +333,27 @@ gulp.task("build", function(callback) {
 // 正式打包源码文件
 gulp.task("build-source", function(callback) {
 	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build-source',
-			callback);
+			'md5', callback);
 });
 
 // 开发源码调试环境
 gulp.task("dev", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-include', 'webpack-dev', callback);
+	gulpSequence('clean', 'oldie', 'html-images', 'html-include',
+			'webpack-dev', callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
+	gulp.watch([ './src/images/**/*.*' ], [ 'html-images' ]);
 });
 
 // 开发压缩调试环境
 gulp.task("dev-minify", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-include', 'webpack-dev-minify',
-			callback);
+	gulpSequence('clean', 'oldie', 'html-images', 'html-include',
+			'webpack-dev-minify', callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
+	gulp.watch([ './src/images/**/*.*' ], [ 'html-images' ]);
 });
 
 // 监听HTML页面变化
@@ -313,7 +361,7 @@ gulp.task("browser-sync", function(callback) {
 	browserSync({
 		proxy : domain + ':' + port,
 		port : 8888,
-		files : [ 'assets/**/*.html' ],
+		files : [ 'dist/**/*.html' ],
 		open : true,
 		notify : true,
 		reloadDelay : 500,// 延迟刷新
