@@ -19,8 +19,9 @@ new webpack.ProvidePlugin({
 	$ : "jquery",
 	jQuery : "jquery",
 	"window.jQuery" : "jquery",
-	'Cookies' : 'js-cookie',
+	cookie : "js-cookie",
 	moment : "moment",
+	accounting : "accounting"
 }),
 // CSS文件放置在CSS目录
 new ExtractTextPlugin("./assets/css/[name].css") ];

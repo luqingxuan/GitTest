@@ -20,6 +20,9 @@ require('jstorage');
 // cookie
 require("js-cookie");
 
+// 数值/货币格式化插件
+require("accounting");
+
 // 遮罩插件
 // require('imports?jQuery=jquery,$=jquery,this=>window!../lib/jquery/loadmask/jquery.loadmask.js');
 // require('../lib/jquery/loadmask/jquery.loadmask.js');
