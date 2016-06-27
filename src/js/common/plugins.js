@@ -28,6 +28,9 @@ require("accounting");
 // require('../lib/jquery/loadmask/jquery.loadmask.js');
 require("jquery.loadmask");
 
+// 仿亚马逊菜单
+require('components/jquery/jquery.menu-aim.js');
+
 // 弹出提示插件
 require('components/jquery/confirm/jquery.confirm.js');
 require('components/jquery/confirm/jquery.confirm.css');
