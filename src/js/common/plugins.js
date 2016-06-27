@@ -28,6 +28,9 @@ require("accounting");
 // require('../lib/jquery/loadmask/jquery.loadmask.js');
 require("jquery.loadmask");
 
+// 分页插件
+require("twbs-pagination");
+
 // 仿亚马逊菜单
 require('components/jquery/jquery.menu-aim.js');
 
