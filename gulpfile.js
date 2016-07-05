@@ -42,7 +42,7 @@ var proxy = {
 };
 
 // 低版本IE8补丁
-gulp.task('oldie', function() {
+gulp.task('polyfill', function() {
 	var src = [ './src/js/polyfill/console-polyfill.js' ];
 	src.push('./src/js/polyfill/json2.js');
 	src.push('./src/js/polyfill/es5-shim.js', './src/js/polyfill/es5-sham.js');
