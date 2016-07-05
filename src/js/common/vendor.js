@@ -1,8 +1,8 @@
 // 修正bootstrap样式
-require('css/lib/bootstrap-hack.css');
+require('css/polyfill/bootstrap.css');
 
 // 修正jQuery插件样式
-require('css/lib/jquery-hack.css');
+require('css/polyfill/jquery.css');
 
 // ES6 Object.assign fix
 require('core-js/es6/object');
