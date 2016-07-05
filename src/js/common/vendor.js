@@ -15,5 +15,24 @@ require('es6-promise').polyfill();
 
 window.$ = $;
 
+// 国际化支持
+moment.locale('zh-CN');
+
 // 解决严格模式下，没有声明就使用的报错
 window.moment = moment;
+
+/** ******************************************************************* */
+/** **************************$$$$$$$********************************** */
+/** ******************************************************************* */
+
+// 本地存储插件
+$.Storage = require('jstorage');
+
+// cookie
+$.Cookie = require("js-cookie");
+
+// 数值/货币格式化插件
+$.Accounting = require("accounting");
+
+// XSS过滤
+$.XSS = require("xss");
