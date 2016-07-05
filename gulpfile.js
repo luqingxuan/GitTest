@@ -43,10 +43,10 @@ var proxy = {
 
 // 低版本IE8补丁
 gulp.task('oldie', function() {
-	var src = [ './src/js/lib/console-polyfill.js' ];
-	src.push('./src/js/lib/json2.js');
-	src.push('./src/js/lib/es5-shim.js', './src/js/lib/es5-sham.js');
-	src.push('./src/js/lib/html5shiv.js', './src/js/lib/respond.js');
+	var src = [ './src/js/polyfill/console-polyfill.js' ];
+	src.push('./src/js/polyfill/json2.js');
+	src.push('./src/js/polyfill/es5-shim.js', './src/js/polyfill/es5-sham.js');
+	src.push('./src/js/polyfill/html5shiv.js', './src/js/polyfill/respond.js');
 
 	return gulp.src(src).pipe(concat('oldie.js')).pipe(uglify()).pipe(
 			gulp.dest('./dist/assets/js'));
