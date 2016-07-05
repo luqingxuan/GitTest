@@ -48,7 +48,7 @@ gulp.task('polyfill', function() {
 	src.push('./src/js/polyfill/es5-shim.js', './src/js/polyfill/es5-sham.js');
 	src.push('./src/js/polyfill/html5shiv.js', './src/js/polyfill/respond.js');
 
-	return gulp.src(src).pipe(concat('oldie.js')).pipe(uglify()).pipe(
+	return gulp.src(src).pipe(concat('polyfill.js')).pipe(uglify()).pipe(
 			gulp.dest('./dist/assets/js'));
 });
 
@@ -326,19 +326,19 @@ gulp.task("webpack-dev-minify", function(callback) {
 
 // 正式打包压缩文件
 gulp.task("build", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build', 'md5',
+	gulpSequence('clean', 'polyfill', 'html-include', 'webpack-build', 'md5',
 			'html-minify', callback);
 });
 
 // 正式打包源码文件
 gulp.task("build-source", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-include', 'webpack-build-source',
+	gulpSequence('clean', 'polyfill', 'html-include', 'webpack-build-source',
 			'md5', callback);
 });
 
 // 开发源码调试环境
 gulp.task("dev", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-images', 'html-include',
+	gulpSequence('clean', 'polyfill', 'html-images', 'html-include',
 			'webpack-dev', callback);
 
 	// 监听HTML文件变化
@@ -348,7 +348,7 @@ gulp.task("dev", function(callback) {
 
 // 开发压缩调试环境
 gulp.task("dev-minify", function(callback) {
-	gulpSequence('clean', 'oldie', 'html-images', 'html-include',
+	gulpSequence('clean', 'polyfill', 'html-images', 'html-include',
 			'webpack-dev-minify', callback);
 
 	// 监听HTML文件变化
