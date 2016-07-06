@@ -7,4 +7,4 @@
 <!-- 其他通用插件依赖 -->
 <script type="text/javascript" src="/assets/js/plugins.js"></script>
 <!-- 项目需要依赖 -->
-<script type="text/javascript" src="/assets/js/vendor.js"></script>
+<script type="text/javascript" src="/assets/js/polyfill.js"></script>

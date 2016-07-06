@@ -42,13 +42,13 @@ var proxy = {
 };
 
 // 低版本IE8补丁
-gulp.task('polyfill', function() {
-	var src = [ './src/js/polyfill/console-polyfill.js' ];
-	src.push('./src/js/polyfill/json2.js');
-	src.push('./src/js/polyfill/es5-shim.js', './src/js/polyfill/es5-sham.js');
-	src.push('./src/js/polyfill/html5shiv.js', './src/js/polyfill/respond.js');
+gulp.task('shim', function() {
+	var src = [ './src/js/shim/console-polyfill.js' ];
+	src.push('./src/js/shim/json2.js');
+	src.push('./src/js/shim/es5-shim.js', './src/js/shim/es5-sham.js');
+	src.push('./src/js/shim/html5shiv.js', './src/js/shim/respond.js');
 
-	return gulp.src(src).pipe(concat('polyfill.js')).pipe(uglify()).pipe(
+	return gulp.src(src).pipe(concat('shim.js')).pipe(uglify()).pipe(
 			gulp.dest('./dist/assets/js'));
 });
 
@@ -326,20 +326,20 @@ gulp.task("webpack-dev-minify", function(callback) {
 
 // 正式打包压缩文件
 gulp.task("build", function(callback) {
-	gulpSequence('clean', 'polyfill', 'html-include', 'webpack-build', 'md5',
+	gulpSequence('clean', 'shim', 'html-include', 'webpack-build', 'md5',
 			'html-minify', callback);
 });
 
 // 正式打包源码文件
 gulp.task("build-source", function(callback) {
-	gulpSequence('clean', 'polyfill', 'html-include', 'webpack-build-source',
+	gulpSequence('clean', 'shim', 'html-include', 'webpack-build-source',
 			'md5', callback);
 });
 
 // 开发源码调试环境
 gulp.task("dev", function(callback) {
-	gulpSequence('clean', 'polyfill', 'html-images', 'html-include',
-			'webpack-dev', callback);
+	gulpSequence('clean', 'shim', 'html-images', 'html-include', 'webpack-dev',
+			callback);
 
 	// 监听HTML文件变化
 	gulp.watch([ './src/**/*.html', './src/**/*.tpl' ], [ 'html-include' ]);
@@ -348,7 +348,7 @@ gulp.task("dev", function(callback) {
 
 // 开发压缩调试环境
 gulp.task("dev-minify", function(callback) {
-	gulpSequence('clean', 'polyfill', 'html-images', 'html-include',
+	gulpSequence('clean', 'shim', 'html-images', 'html-include',
 			'webpack-dev-minify', callback);
 
 	// 监听HTML文件变化
