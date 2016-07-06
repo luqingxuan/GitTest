@@ -13,6 +13,12 @@ require('css/polyfill/hover.css');
 // CSS3字体图标库
 require('font-awesome-webpack!root/font-awesome.config.js');
 
+// 表单插件
+require('jquery-form');
+
+// 表单验证插件
+require('jquery-validation');
+
 // 遮罩插件
 require("jquery.loadmask");
 

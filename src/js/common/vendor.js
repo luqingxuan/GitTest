@@ -29,7 +29,7 @@ window.moment = moment;
 $.Storage = require('jstorage');
 
 // cookie
-$.Cookie = require("js-cookie");
+$.Cookies = require("js-cookie");
 
 // 数值/货币格式化插件
 $.Accounting = require("accounting");
