@@ -13,4 +13,4 @@
 <!-- 其它通用库依赖 -->
 <link rel="stylesheet" href="/assets/css/plugins.css" />
 <!-- 项目需要依赖 -->
-<link rel="stylesheet" href="/assets/css/vendor.css" />
+<link rel="stylesheet" href="/assets/css/polyfill.css" />
