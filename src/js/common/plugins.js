@@ -8,12 +8,14 @@
 require('animate.css');
 
 // CSS3动画库
-require('css/polyfill/hover.css');
+require('css/lib/hover.css');
 
 // CSS3字体图标库
 require('font-awesome-webpack!root/font-awesome.config.js');
 
-// 表单插件
+// 按钮库
+require('css/lib/sexybuttons/sexybuttons.css');
+
 require('jquery-form');
 
 // 表单验证插件

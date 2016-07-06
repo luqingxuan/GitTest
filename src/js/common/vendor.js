@@ -4,6 +4,9 @@ require('css/polyfill/bootstrap.css');
 // 修正jQuery插件样式
 require('css/polyfill/jquery.css');
 
+// 修正SexyButton插件样式
+require('css/polyfill/sexybuttons.css');
+
 // ES6 Object.assign fix
 require('core-js/es6/object');
 
