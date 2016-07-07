@@ -16,6 +16,9 @@ require('font-awesome-webpack!root/font-awesome.config.js');
 // 按钮库
 require('css/lib/sexybuttons/sexybuttons.css');
 
+// velocity animate library
+require('velocity-animate');
+
 require('jquery-form');
 
 // 表单验证插件
