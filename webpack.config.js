@@ -200,6 +200,7 @@ module.exports = {
 		alias : {
 			root : path.resolve(''),
 			js : path.resolve('src/js'),
+			shim : path.resolve('src/js/shim'),
 			css : path.resolve('src/css'),
 			images : path.resolve('src/images'),
 			components : path.resolve('src/js/components')
