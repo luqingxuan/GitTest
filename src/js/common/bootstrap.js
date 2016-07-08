@@ -5,7 +5,10 @@ require('bootstrap-webpack!root/bootstrap.config.js');
 require('bootstrap-filestyle');
 
 // Bootstrap Pagination插件
-require("twbs-pagination");
+require('twbs-pagination');
+
+// Bootstrap Social插件
+require('bootstrap-social');
 
 // Bootstrap3 Dialog插件
 $.BootstrapDialog = require('bootstrap3-dialog');
