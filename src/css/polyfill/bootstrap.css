@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+/**Internet Explorer 10 并没有对 屏幕的宽度 和 视口（viewport）的宽度 进行区分**/
+@-webkit-viewport   { width: device-width; }
+@-moz-viewport      { width: device-width; }
+@-ms-viewport       { width: device-width; }
+@-o-viewport        { width: device-width; }
+@viewport           { width: device-width; }
+
+/**从Safari v8.0 开始，固定宽度的 .container 会导致 Safari 使用非常小的字号来打印页面**/
+@media print {
+  .container {
+    width: auto;
+  }
+}
+
 .table {
 	margin-bottom: 0;
 }
