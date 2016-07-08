@@ -1,12 +1,3 @@
-// 修正bootstrap样式
-require('css/polyfill/bootstrap.css');
-
-// 修正jQuery插件样式
-require('css/polyfill/jquery.css');
-
-// 修正SexyButton插件样式
-require('css/polyfill/sexybuttons.css');
-
 // ES6 Object.assign fix
 require('core-js/es6/object');
 
@@ -15,6 +6,33 @@ require('fetch-polyfill');
 
 // ES6 Promise Object fix
 require('es6-promise').polyfill();
+
+/** ******************************************************************* */
+/** **************************$$$$$$$********************************** */
+/** ******************************************************************* */
+
+// Bootstrap3 Dialog插件
+$.BootstrapDialog = require('bootstrap3-dialog');
+require('modules/bootstrap3-dialog/dist/css/bootstrap-dialog.css')
+
+// IE9+ Sortable排序插件
+$.Sortable = require('sortablejs');
+
+// 本地存储插件
+$.Storage = require('jstorage');
+
+// cookie
+$.Cookies = require("js-cookie");
+
+// 数值/货币格式化插件
+$.Accounting = require("accounting");
+
+// XSS过滤
+$.XSS = require("xss");
+
+/** ******************************************************************* */
+/** **************************$$$$$$$********************************** */
+/** ******************************************************************* */
 
 window.$ = $;
 
@@ -28,14 +46,11 @@ window.moment = moment;
 /** **************************$$$$$$$********************************** */
 /** ******************************************************************* */
 
-// 本地存储插件
-$.Storage = require('jstorage');
+// 修正bootstrap样式
+require('css/polyfill/bootstrap.css');
 
-// cookie
-$.Cookies = require("js-cookie");
+// 修正jQuery插件样式
+require('css/polyfill/jquery.css');
 
-// 数值/货币格式化插件
-$.Accounting = require("accounting");
-
-// XSS过滤
-$.XSS = require("xss");
+// 修正SexyButton插件样式
+require('css/polyfill/sexybuttons.css');

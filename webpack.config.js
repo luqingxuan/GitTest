@@ -203,6 +203,7 @@ module.exports = {
 			shim : path.resolve('src/js/shim'),
 			css : path.resolve('src/css'),
 			images : path.resolve('src/images'),
+			modules : path.resolve('node_modules'),
 			components : path.resolve('src/js/components')
 		}
 	},

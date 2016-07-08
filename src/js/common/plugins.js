@@ -10,11 +10,15 @@ require('animate.css');
 // CSS3动画库
 require('css/lib/hover.css');
 
+// 按钮库
+require('css/lib/sexybuttons/sexybuttons.css');
+
 // CSS3字体图标库
 require('font-awesome-webpack!root/font-awesome.config.js');
 
-// 按钮库
-require('css/lib/sexybuttons/sexybuttons.css');
+/** ******************************************************************* */
+/** **************************$$$$$$$********************************** */
+/** ******************************************************************* */
 
 // velocity animate library
 require('velocity-animate');
@@ -30,6 +34,9 @@ require("jquery.loadmask");
 
 // 分页插件
 require("twbs-pagination");
+
+// 排序插件
+require('jquery-sortable');
 
 // 文件上传样式插件
 require('bootstrap-filestyle');
