@@ -32,18 +32,5 @@ require('jquery-validation');
 // 遮罩插件
 require("jquery.loadmask");
 
-// 分页插件
-require("twbs-pagination");
-
 // 排序插件
 require('jquery-sortable');
-
-// 文件上传样式插件
-require('bootstrap-filestyle');
-
-// 仿亚马逊菜单
-require('components/jquery/jquery.menu-aim.js');
-
-// 弹出提示插件
-require('components/jquery/confirm/jquery.confirm.js');
-require('components/jquery/confirm/jquery.confirm.css');

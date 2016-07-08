@@ -11,10 +11,6 @@ require('es6-promise').polyfill();
 /** **************************$$$$$$$********************************** */
 /** ******************************************************************* */
 
-// Bootstrap3 Dialog插件
-$.BootstrapDialog = require('bootstrap3-dialog');
-require('modules/bootstrap3-dialog/dist/css/bootstrap-dialog.css')
-
 // IE9+ Sortable排序插件
 $.Sortable = require('sortablejs');
 
@@ -45,9 +41,6 @@ window.moment = moment;
 /** ******************************************************************* */
 /** **************************$$$$$$$********************************** */
 /** ******************************************************************* */
-
-// 修正bootstrap样式
-require('css/polyfill/bootstrap.css');
 
 // 修正jQuery插件样式
 require('css/polyfill/jquery.css');

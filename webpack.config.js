@@ -33,10 +33,8 @@ var globalEntrys = function(entrys) {
 
 	entrys['moment'] = [ 'moment' ];
 
-	entrys['bootstrap'] = [ 'bootstrap-webpack!./bootstrap.config.js' ];
-
 	plugins.push(new CommonsChunkPlugin({// 注意顺序
-		name : [ 'bootstrap', 'moment', 'jquery' ],
+		name : [ 'moment', 'jquery' ],
 		minChunks : Infinity
 	}));
 
