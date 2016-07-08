@@ -31,6 +31,9 @@ require("jquery.loadmask");
 // 分页插件
 require("twbs-pagination");
 
+// 文件上传样式插件
+require('bootstrap-filestyle');
+
 // 仿亚马逊菜单
 require('components/jquery/jquery.menu-aim.js');
 
