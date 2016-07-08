@@ -22,6 +22,7 @@
     "babel-runtime": "^5.8.0",
     "bootstrap": "^3.3.6",
     "bootstrap-filestyle": "^1.2.1",
+    "bootstrap-social": "^5.0.0",
     "bootstrap-webpack": "0.0.5",
     "bootstrap3-dialog": "^1.35.2",
     "browser-sync": "^2.12.10",
