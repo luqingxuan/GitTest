@@ -4,9 +4,9 @@ var glob = require('glob');
 
 var webpack = require('webpack');
 
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
+var CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 // CSS浏览器前缀问题
 var autoprefixer = require('autoprefixer');
@@ -16,13 +16,13 @@ var precss = require('precss');
 var plugins = [
 // 全局依赖,根据需要补充
 new webpack.ProvidePlugin({
-	$ : "jquery",
-	jQuery : "jquery",
-	"window.jQuery" : "jquery",
-	moment : "moment"
+	$ : 'jquery',
+	jQuery : 'jquery',
+	'window.jQuery' : 'jquery',
+	moment : 'moment'
 }),
 // CSS文件放置在CSS目录
-new ExtractTextPlugin("./assets/css/[name].css") ];
+new ExtractTextPlugin('./assets/css/[name].css') ];
 
 // 全局性依赖，手动配置
 var globalEntrys = function(entrys) {
@@ -46,15 +46,15 @@ var commonEntrys = function(entrys) {
 
 	entrys = entrys || {};
 
-	var src = new RegExp(__dirname.replace(/\\/g, "/") + "/src/js/common/");
+	var src = new RegExp(__dirname.replace(/\\/g, '/') + '/src/js/common/');
 
 	glob.sync(__dirname + '/src/js/common/**/*.js').forEach(function(name) {
 
 		// 前缀
-		var entry = name.replace(src, "");
+		var entry = name.replace(src, '');
 
 		// 后缀
-		entry = entry.replace(/\.js$/, "");
+		entry = entry.replace(/\.js$/, '');
 
 		entrys[entry] = [ name ];
 
@@ -68,15 +68,15 @@ var pageEntrys = function(entrys) {
 
 	entrys = entrys || {};
 
-	var src = new RegExp(__dirname.replace(/\\/g, "/") + "/src/js/pages/");
+	var src = new RegExp(__dirname.replace(/\\/g, '/') + '/src/js/pages/');
 
 	glob.sync(__dirname + '/src/js/pages/**/*.js').forEach(function(name) {
 
 		// 前缀
-		var entry = name.replace(src, "");
+		var entry = name.replace(src, '');
 
 		// 后缀
-		entry = entry.replace(/\.js$/, "");
+		entry = entry.replace(/\.js$/, '');
 
 		entrys[entry] = [ name ];
 
@@ -119,14 +119,14 @@ var loaders = [
 		},
 		{
 			test : /\.less$/,
-			loader : ExtractTextPlugin.extract("style-loader",
-					"css-loader!postcss-loader")
+			loader : ExtractTextPlugin.extract('style-loader',
+					'css-loader!postcss-loader')
 		},
 		{
 			test : /\.css$/,
 			loader : 'style!css',
-			loader : ExtractTextPlugin.extract("style-loader",
-					"css-loader!postcss-loader")
+			loader : ExtractTextPlugin.extract('style-loader',
+					'css-loader!postcss-loader')
 		}, {// bootstrap font-awesome
 			test : /\.(woff|woff2)(\?v=\d+\.\d+\.\d+)?$/,
 			loader : 'url',
@@ -164,15 +164,15 @@ var loaders = [
 			}
 		}, {// font-awesome
 			test : /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-			loader : "file",
+			loader : 'file',
 			query : {
 				limit : 10000,
 				// 字体文件放置目录
 				name : 'assets/font/[name].[ext]'
 			}
 		}, {// 如果要加载jQuery插件,解析路径&参数
-			test : "/src/js/components/jquery/**/*.js$",
-			loader : "'imports?jQuery=jquery,$=jquery,this=>window"
+			test : '/src/js/components/jquery/**/*.js$',
+			loader : 'imports?jQuery=jquery,$=jquery,this=>window'
 		} ];
 
 module.exports = {
@@ -208,7 +208,7 @@ module.exports = {
 	// 当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中
 	// 通过引用外部文件的方式引入第三方库 via script tag
 	externals : {
-	// "jquery" : "jQuery"
+	// 'jquery' : 'jQuery'
 	// moment: true
 	},
 	noParse : [// 如果你 确定一个模块中没有其它新的依赖 就可以配置这项，webpack 将不再扫描这个文件中的依赖
@@ -242,8 +242,8 @@ if (process.env.NODE_ENV === 'production') {
 	module.exports.plugins = plugins.concat(
 			new webpack.optimize.OccurenceOrderPlugin(),
 			new webpack.DefinePlugin({
-				"process.env" : {
-					"NODE_ENV" : JSON.stringify("production")
+				'process.env' : {
+					'NODE_ENV' : JSON.stringify('production')
 				}
 			}), new webpack.optimize.UglifyJsPlugin({
 				mangle : {
