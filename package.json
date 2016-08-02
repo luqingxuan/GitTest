@@ -71,6 +71,7 @@
     "moment": "^2.11.1",
     "normalize.css": "^4.1.1",
     "page": "^1.7.1",
+    "pdf.js": "^0.1.0",
     "pdfobject": "^2.0.201604172",
     "pnotify": "^3.0.0",
     "postcss-loader": "^0.8.0",
