@@ -47,3 +47,6 @@ require('css/polyfill/jquery.css');
 
 // 修正SexyButton插件样式
 require('css/polyfill/sexybuttons.css');
+
+// 修正bootstrap样式
+require('css/polyfill/bootstrap.css');

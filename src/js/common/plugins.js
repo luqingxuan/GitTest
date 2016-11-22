@@ -7,8 +7,11 @@
 // CSS3动画库
 require('animate.css');
 
+// Ionic font
+require('ionicons/css/ionicons.css');
+
 // CSS3动画库
-require('css/lib/hover.css');
+require('hover.css/css/hover.css');
 
 // 按钮库
 require('css/lib/sexybuttons/sexybuttons.css');
