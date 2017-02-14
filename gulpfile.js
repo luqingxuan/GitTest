@@ -145,7 +145,7 @@ gulp.task('dev', function(callback) {
         callback);
 
     // 监听HTML文件变化
-    gulp.watch(['./src/**/*.html', './src/**/*.tpl'], ['html-include']);
+    gulp.watch(['./src/html/**/*.*'], ['html-include']);
     gulp.watch(['./src/images/**/*.*'], ['html-images']);
 });
 
@@ -155,7 +155,7 @@ gulp.task('dev-minify', function(callback) {
         'webpack-dev-minify', callback);
 
     // 监听HTML文件变化
-    gulp.watch(['./src/**/*.html', './src/**/*.tpl'], ['html-include']);
+    gulp.watch(['./src/html/**/*.*'], ['html-include']);
     gulp.watch(['./src/images/**/*.*'], ['html-images']);
 });
 
