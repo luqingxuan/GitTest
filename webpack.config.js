@@ -42,7 +42,7 @@ for (var key in config.entry) {
         config.entry[key] = [config.entry[key]];
 
     config.entry[key].unshift('webpack/hot/dev-server');
-    config.entry[key].unshift(require.resolve('webpack-dev-server/client/') + '?' + 'http://' + webServerDomain + ':' + webServerPort);
+    config.entry[key].unshift('webpack-dev-server/client/?http://' + webServerDomain + ':' + webServerPort);
 }
 
 // api proxy for develop
