@@ -5,7 +5,7 @@ webpack+gulp project
 2.命令行进入JqueryPageExample目录
 3.执行npm install
 4.执行命令（见下）
-5.默认浏览器自动打开地址栏：http://localhost:8888访问
+5.默认浏览器自动打开地址栏：http://localhost:7777访问
 
 命令行（观察各种文件变动在dist目录）：
 1.gulp dev，开发人员调试命令
