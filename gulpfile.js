@@ -1,28 +1,23 @@
 require('./gulpfile-tasks.js');
 require('./gulpfile-release.js');
 
-const extend = require('extend');
-
-const gulp = require('gulp');
-
-const gulpSequence = require('gulp-sequence');
-
-const browserSync = require('browser-sync');
-
-const webpack = require('webpack');
-
-const WebpackDevServer = require('webpack-dev-server');
-
-const webpackDevelopConfig = require('./webpack.config.js');
-
 // 域名
 const webServerDomain = 'localhost';
 
 // 端口
 const webServerPort = 7070;
 
-// 代理端口
-const webServerProxyPort = 7777;
+const extend = require('extend');
+
+const gulp = require('gulp');
+
+const gulpSequence = require('gulp-sequence');
+
+const webpack = require('webpack');
+
+const WebpackDevServer = require('webpack-dev-server');
+
+const webpackDevelopConfig = require('./webpack.config.js');
 
 const uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
     mangle: {
@@ -36,31 +31,9 @@ const uglifyJsPlugin = new webpack.optimize.UglifyJsPlugin({
     }
 });
 
-// 负责监听HTML变化,并刷新浏览器
-const browserSyncPlugin = function() {
-    this.plugin('done', function() {
-        gulp.start('browser-sync');
-    });
-};
-
-// 监听HTML页面变化
-gulp.task('browser-sync', function(callback) {
-    browserSync({
-        proxy: webServerDomain + ':' + webServerPort,
-        port: webServerProxyPort,
-        files: ['dist/**/*.html'],
-        open: true,
-        notify: true,
-        reloadDelay: 500, // 延迟刷新
-    });
-});
-
 // 开发调试源码环境
 gulp.task('webpack-dev', function(callback) {
     var webpackConfig = extend(true, {}, webpackDevelopConfig);
-
-    // 启动browser-sync
-    webpackConfig.plugins.push(browserSyncPlugin);
 
     var cfg = {
         inline: true,
@@ -124,9 +97,6 @@ gulp.task('webpack-dev-minify', function(callback) {
 
     // uglify js file
     webpackConfig.plugins.push(uglifyJsPlugin);
-
-    // 启动browser-sync
-    webpackConfig.plugins.push(browserSyncPlugin);
 
     var compiler = webpack(webpackConfig);
 

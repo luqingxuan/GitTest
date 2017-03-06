@@ -1,4 +1,8 @@
 require('css/pages/index.css');
 require('enhance/index.js');
 
-$(document.body).css("background-color", "green");
+$(() => {
+    $(document.body).append('<h1>hell</h1>');
+
+    $(document.body).append('<h1>world</h1>');
+});

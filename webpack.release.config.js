@@ -1,11 +1,11 @@
+// API服务器
+const productionApiServer = ''
+
 const webpack = require('webpack');
 
 const extend = require('extend');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-// API服务器
-const productionApiServer = ''
 
 const defaults = require('./webpack.common.config.js');
 const config = extend(true, {}, defaults);

@@ -1,17 +1,17 @@
+// 端口
+const webServerPort = 7070;
+
+// 域名
+const webServerDomain = 'localhost';
+
+// API服务器
+const developApiServer = ''
+
 const webpack = require('webpack');
 
 const extend = require('extend');
 
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-// 域名
-const webServerDomain = 'localhost';
-
-// 端口
-const webServerPort = 7070;
-
-// API服务器
-const developApiServer = ''
 
 const defaults = require('./webpack.common.config.js');
 const config = extend(true, {}, defaults);
@@ -25,7 +25,7 @@ config.plugins = config.plugins || [];
 config.plugins.push(
     new webpack.DefinePlugin({
         'process.env': {
-            'NODE_ENV': JSON.stringify('develop'),
+            'NODE_ENV': JSON.stringify('development'),
             'API_SERVER': JSON.stringify(developApiServer)
         }
     })
