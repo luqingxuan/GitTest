@@ -1,0 +1,55 @@
+/** 以下限定宽度摘抄自bootstrap **/
+
+/**
+  Medium screen / desktop
+**/
+@media screen and (max-width: 992px) and (min-width: 768px) {
+    .layui-layer-page {
+        min-width: 400px!important;
+    }
+}
+
+/**
+  Small screen / tablet
+**/
+@media screen and (max-width: 768px) and (min-width: 480px){
+    .layui-layer-page {
+        max-width: 90%!important;
+        min-width: 0px!important;
+    }
+}
+
+/**
+  Extra small screen / phone
+**/
+@media screen and (max-width: 480px) {
+    .layui-layer-page {
+        width: 100%!important;
+        min-width: 100%!important;
+        height: 90%!important;
+        top: 5%!important;
+    }
+}
+
+html {
+    background-image: none;
+    background-attachment: inherit;
+}
+
+.mobile .modal-mobile {
+    position: fixed;
+    -webkit-overflow-scrolling: auto;
+    overflow: hidden;
+}
+
+.layui-layer-loading.loading-with-text .layui-layer-content {
+    background-position: 50% 0!important;
+    text-align: center!important;
+    width: 200px!important;
+    height: 60px!important;
+
+    .loading-text {
+        padding-top: 40px;
+        font-weight: bold;
+    }
+}

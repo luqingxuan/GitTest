@@ -2,10 +2,10 @@ webpack+gulp project
 
 使用：
 1.拉下来project到本地
-2.命令行进入JqueryPageExample目录
+2.命令行进入ReactPageExample目录
 3.执行npm install
 4.执行命令（见下）
-5.默认浏览器自动打开地址栏：http://localhost:7777访问
+5.默认浏览器自动打开地址栏：http://localhost:8888访问
 
 命令行（观察各种文件变动在dist目录）：
 1.gulp dev，开发人员调试命令
@@ -15,7 +15,7 @@ webpack+gulp project
 
 特点
 1.webpack+gulp方式集成开发
-2.集成jquery/bootstrap，同样易于集成其它plugin
+2.集成jquery/bootstrap/react，同样易于集成其它plugin
 2.js/css/html压缩，js混淆，减小体积
 3.MD5文件版本管理
 4.前后端分离，API调试方便

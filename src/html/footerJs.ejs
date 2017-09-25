@@ -1,0 +1,22 @@
+<script type="text/javascript">
+	//如果 <select> 元素应用了 border-radius 和/或 border 样式，Android 系统默认的浏览器将不会显示侧边栏控件。
+	function fixAndroidSelect() {
+		var nua = navigator.userAgent;
+		var isAndroid = (nua.indexOf('Mozilla/5.0') > -1 && nua.indexOf('Android ') > -1 && nua.indexOf('AppleWebKit') > -1 && nua.indexOf('Chrome') === -1);
+		if (isAndroid) {
+			$('select.form-control').removeClass('form-control').css('width','100%');
+		}
+	}
+
+	$(fixAndroidSelect);
+</script>
+
+<script type="text/javascript">
+    // 调研可配置参数
+    var DYOptions = {
+        show: false,
+        showCount: 1
+    };
+</script>
+
+<script type="text/javascript" src="http://nres.ffan.com/newh5/2017810/dd211ec4eefe78100658af31e1c2ad145e0b0490.js"></script>

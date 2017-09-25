@@ -1,9 +1,1 @@
 @CHARSET "UTF-8";
-
-body {
-	background: url("../../images/alert.png") 50% 50% no-repeat;
-}
-
-h1 {
-    color: yellow;
-}
