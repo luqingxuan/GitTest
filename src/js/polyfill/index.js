@@ -1,1 +1,1 @@
-require('./jquery.js');
+require('./babel-polyfill.js');

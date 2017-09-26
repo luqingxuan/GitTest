@@ -49,12 +49,12 @@ glob.sync(projectPath + pagePath + '**/*.js').forEach(function(filePath) {
 
 // ------------------------------------------------------------------------------
 
-// vue
+// jquery
 var jqueryEntries = [];
 
 jqueryEntries.push({
     id: 'jquery',
-    contains: ['jquery']
+    contains: ['expose-loader?jQuery!expose-loader?$!jquery']
 });
 
 // ------------------------------------------------------------------------------
