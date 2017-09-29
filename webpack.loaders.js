@@ -2,6 +2,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const IsProduct = process.env.NODE_ENV === 'production';
 
+const cssLoader = {
+    loader: 'css-loader',
+    options: {
+        minimize: true // css压缩
+    }
+};
+
 var fonts = IsProduct ? 'assets/fonts/[name].[hash:8].[ext]' : 'assets/fonts/[name].[ext]';
 
 var images = IsProduct ? 'assets/images/[name].[hash:8].[ext]' : 'assets/images/[name].[ext]';
@@ -11,37 +18,22 @@ module.exports = [{
     use: ['babel-loader'],
     exclude: /node_modules/
 }, {
-    test: /\.css$/,
-    use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-            loader: 'css-loader',
-            options: {
-                minimize: IsProduct ? true : false // css压缩
-            }
-        }, 'postcss-loader']
+    test: /\.css$/, // development vs product
+    use: !IsProduct ? ['style-loader', 'css-loader', 'postcss-loader'] : ExtractTextPlugin.extract({
+        use: [cssLoader, 'postcss-loader'],
+        fallback: 'style-loader'
     })
 }, {
-    test: /\.less$/,
-    use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-            loader: 'css-loader',
-            options: {
-                minimize: IsProduct ? true : false // css压缩
-            }
-        }, 'postcss-loader', 'less-loader']
+    test: /\.less$/, // development vs product
+    use: !IsProduct ? ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'] : ExtractTextPlugin.extract({
+        use: [cssLoader, 'postcss-loader', 'less-loader'],
+        fallback: 'style-loader'
     })
 }, {
-    test: /\.scss$/,
-    use: ExtractTextPlugin.extract({
-        fallback: 'style-loader',
-        use: [{
-            loader: 'css-loader',
-            options: {
-                minimize: IsProduct ? true : false // css压缩
-            }
-        }, 'postcss-loader', 'sass-loader']
+    test: /\.scss$/, // development vs product
+    use: !IsProduct ? ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'] : ExtractTextPlugin.extract({
+        use: [cssLoader, 'postcss-loader', 'sass-loader'],
+        fallback: 'style-loader'
     })
 }, {
     test: /\.(png|jpg|gif)$/,
